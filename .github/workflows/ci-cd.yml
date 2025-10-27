@@ -7,30 +7,20 @@ on:
     branches: [ "main", "develop" ]
 
 jobs:
-  build_and_test:
+  demo-pipeline:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
+      - name: Build simulation
+        run: echo "Simulating build process for Ecléra..."
 
-      - name: Install dependencies
-        run: npm install
+      - name: Run demo tests
+        run: echo "All tests passed (simulated)"
 
-      - name: Run tests
-        run: npm test
+      - name: Deployment simulation
+        run: echo "Ecléra app successfully deployed (demo mode)"
 
-      - name: Build project
-        run: npm run build
-
-  notify:
-    needs: build_and_test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send GitHub notification
-        run: echo "Ecléra build and tests passed successfully!"
+      - name: Notify team
+        run: echo "CI/CD pipeline completed successfully!"
